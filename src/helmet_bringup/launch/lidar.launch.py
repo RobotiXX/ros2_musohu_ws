@@ -42,7 +42,16 @@ def generate_launch_description():
         output='screen'
     )
     
+    # transform from zed to lidar
+    tf_cam2lidar_node = Node(
+        package='tf2_ros',
+        executable='static_transform_publisher',
+        output='screen',
+        arguments=['-0.530000', '0.000000', '0.400000', '0.000000', '0.000000', '0.000000', 'zed2i_camera_link', 'rslidar'],
+    )
+    
     return LaunchDescription([
         frame_id_arg,
         lidar_node,
+        tf_cam2lidar_node,
     ])

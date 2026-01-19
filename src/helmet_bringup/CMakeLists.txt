@@ -8,6 +8,11 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 
+install(PROGRAMS
+  scripts/action_generator.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
 # Install launch files
 install(DIRECTORY
   launch
